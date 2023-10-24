@@ -3,22 +3,26 @@ package pizzapp;
 public class PizzApp extends javax.swing.JFrame {
     
     double meretSzorzo = 1;
+    int alapAr = -1;
+    int extrak;
+    int db = 1;
+    double vegsoAr;
 
     public PizzApp() {
         initComponents();
         
-        int alapAr2 = 1750;
+        alapAr = 1750;
         
         meretSzorzo = 1;
         
-        int db = 1;
+        db = 1;
         
         int extra1 = 0;
         int extra2 = 0;
         int extra3 = 0;
-        int extrak = extra1 + extra2 + extra3;
+        extrak = extra1 + extra2 + extra3;
         
-        double vegsoAr = alapAr2 * meretSzorzo + extrak;
+        vegsoAr = alapAr * meretSzorzo + extrak;
         vegsoAr *= db;
         lblAr.setText(vegsoAr + "");
     }
@@ -248,7 +252,7 @@ public class PizzApp extends javax.swing.JFrame {
 
     private void cmdValaszthatoPizzakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValaszthatoPizzakActionPerformed
         int pizzaindex = cmdValaszthatoPizzak.getSelectedIndex();
-        int alapAr = -1;
+        alapAr = -1;
         if(pizzaindex == 0){
             alapAr = 1580;
         }
@@ -266,20 +270,24 @@ public class PizzApp extends javax.swing.JFrame {
         
         
         
-        int db = 1;
+        db = 1;
         
         int extra1 = 0;
         int extra2 = 0;
         int extra3 = 0;
-        int extrak = extra1 + extra2 + extra3;
+        extrak = extra1 + extra2 + extra3;
         
-        double vegsoAr = alapAr * meretSzorzo + extrak;
+        vegsoAr = alapAr * meretSzorzo + extrak;
         vegsoAr *= db;
         lblAr.setText(vegsoAr + "");
     }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
 
     private void rdbMeret25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret25ItemStateChanged
         meretSzorzo = .75;
+        
+        vegsoAr = alapAr * meretSzorzo + extrak;
+        vegsoAr *= db;
+        lblAr.setText(vegsoAr + "");
     }//GEN-LAST:event_rdbMeret25ItemStateChanged
 
     private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
