@@ -56,6 +56,11 @@ public class PizzApp extends javax.swing.JFrame {
 
         cmdValaszthatoPizzak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Margherita", "Hawaii", "Songoku", "Diavola" }));
         cmdValaszthatoPizzak.setSelectedIndex(2);
+        cmdValaszthatoPizzak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdValaszthatoPizzakActionPerformed(evt);
+            }
+        });
 
         pnlMeret.setBorder(javax.swing.BorderFactory.createTitledBorder("Méret"));
 
@@ -228,6 +233,38 @@ public class PizzApp extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdValaszthatoPizzakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValaszthatoPizzakActionPerformed
+        int pizzaindex = cmdValaszthatoPizzak.getSelectedIndex();
+        int alapAr = -1;
+        if(pizzaindex == 0){
+            alapAr = 1590;
+        }
+        else if(pizzaindex == 1){
+            alapAr = 1680;
+        }
+        else if(pizzaindex == 2){
+            alapAr = 1750;
+    }
+        else if(pizzaindex == 3){
+            alapAr = 2100;
+        }
+        
+        
+        
+        double meretSzorzo = 1;
+        
+        int db = 1;
+        
+        int extra1 = 0;
+        int extra2 = 0;
+        int extra3 = 0;
+        int extrak = extra1 + extra2 + extra3;
+        
+        double vegsoAr = alapAr * meretSzorzo + extrak;
+        vegsoAr *= db;
+        lblAr.setText(vegsoAr + "");
+    }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
