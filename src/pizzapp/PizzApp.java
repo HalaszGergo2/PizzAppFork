@@ -11,6 +11,7 @@ public class PizzApp extends javax.swing.JFrame {
     int extra1 = 0;
     int extra2 = 0;
     int extra3 = 0;
+    String osszegzo = "";
     
 
     public PizzApp() {
@@ -210,6 +211,11 @@ public class PizzApp extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txaOsszesito);
 
         btnRendel.setText("Megrendelem");
+        btnRendel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRendelActionPerformed(evt);
+            }
+        });
 
         lblOsszesito.setText("Összestő:");
 
@@ -362,9 +368,38 @@ public class PizzApp extends javax.swing.JFrame {
             extra1 += -250;
             extrak = extra1 + extra2 + extra3;
             szamolasEsKiiras();
+           
         }
+        
     }//GEN-LAST:event_chbAnanaszItemStateChanged
 
+    private void btnRendelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRendelActionPerformed
+    osszegzo += cmdValaszthatoPizzak.getSelectedItem();
+     
+    if(rdbMeret25.isSelected()){
+    osszegzo += "\n25cm\n";}
+    if(rdbMeret32.isSelected()){
+    osszegzo += "\n32cm\n";}
+    osszegzo += numDb.getValue();
+    osszegzo += "db";
+    if(chbSajt.isSelected()){
+                   osszegzo += "\nSajt, ";
+                   
+     }
+     if(chbAnanasz.isSelected()){
+                   osszegzo += "\nAnanász, ";
+                   
+     }
+     if(chbHagyma.isSelected()){
+                   osszegzo += "\nHagyma, ";
+      
+     }
+     osszegzo += lblAr.getText();
+     osszegzo += "Ft";
+      kiiras();
+    }//GEN-LAST:event_btnRendelActionPerformed
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -419,4 +454,8 @@ public class PizzApp extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdbMeret32;
     private javax.swing.JTextArea txaOsszesito;
     // End of variables declaration//GEN-END:variables
+
+    private void kiiras() {
+        txaOsszesito.setText(osszegzo);
+    }
 }
